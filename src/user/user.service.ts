@@ -20,7 +20,10 @@ export class UserService {
   }
 
   findOne(id: number) {
-    return this.userRepository.findOne({ where: { id } });
+    return this.userRepository.findOne({
+      where: { id },
+      relations: ['student'],
+    });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
