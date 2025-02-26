@@ -1,9 +1,11 @@
 import { Address } from 'src/address/entities/address.entity';
+import { Course } from 'src/course/entities/course.entity';
 import { User } from 'src/user/entities/user.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  ManyToMany,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -28,5 +30,8 @@ export class Student {
   user: User;
 
   @OneToMany(() => Address, (address) => address.student)
-  addresses: Address;
+  addresses: Address[];
+
+  @ManyToMany(() => Course, (course) => course.students)
+  courses: Course[];
 }

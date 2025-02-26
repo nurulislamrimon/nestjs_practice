@@ -9,6 +9,7 @@ import { dbConfigProd } from './config/db.production';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
 import { AddressModule } from './address/address.module';
+import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AddressModule } from './address/address.module';
     UserModule,
     StudentModule,
     AddressModule,
+    CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
