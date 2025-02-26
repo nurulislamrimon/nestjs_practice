@@ -2,13 +2,20 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { dbConfig } from './config/db';
+import { dbConfigDev } from './config/db.dev';
 import { ConfigModule } from '@nestjs/config';
+import { env } from './config/env';
+import { dbConfigProd } from './config/db.production';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, expandVariables: true }),
-    TypeOrmModule.forRoot(dbConfig),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      expandVariables: true,
+    }),
+    TypeOrmModule.forRoot(
+      env.environment === 'production' ? dbConfigProd : dbConfigDev,
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],
