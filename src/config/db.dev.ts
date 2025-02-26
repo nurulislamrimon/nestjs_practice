@@ -9,5 +9,6 @@ export const dbConfigDev: TypeOrmModuleOptions = {
   password: env.db_pass,
   database: 'nestjs_practice',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  autoLoadEntities: true,
   synchronize: true,
 };

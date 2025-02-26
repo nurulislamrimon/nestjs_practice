@@ -6,6 +6,7 @@ import { dbConfigDev } from './config/db.dev';
 import { ConfigModule } from '@nestjs/config';
 import { env } from './config/env';
 import { dbConfigProd } from './config/db.production';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -16,6 +17,8 @@ import { dbConfigProd } from './config/db.production';
     TypeOrmModule.forRoot(
       env.environment === 'production' ? dbConfigProd : dbConfigDev,
     ),
+    // modules==============
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
