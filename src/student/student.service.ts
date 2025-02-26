@@ -20,7 +20,10 @@ export class StudentService {
   }
 
   findOne(id: number) {
-    return this.studentRepository.findOne({ where: { id } });
+    return this.studentRepository.findOne({
+      where: { id },
+      relations: ['user'],
+    });
   }
 
   update(id: number, updateStudentDto: UpdateStudentDto) {
