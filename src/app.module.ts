@@ -8,6 +8,7 @@ import { env } from './config/env';
 import { dbConfigProd } from './config/db.production';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { StudentModule } from './student/student.module';
     // modules==============
     UserModule,
     StudentModule,
+    AddressModule,
   ],
   controllers: [AppController],
   providers: [AppService],
