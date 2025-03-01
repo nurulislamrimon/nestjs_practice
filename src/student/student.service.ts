@@ -4,6 +4,7 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Student } from './entities/student.entity';
 import { Repository } from 'typeorm';
+import { PaginationDto } from './dto/pagination.dto';
 
 @Injectable()
 export class StudentService {
@@ -15,8 +16,11 @@ export class StudentService {
     return this.studentRepository.save(createStudentDto);
   }
 
-  findAll() {
-    return this.studentRepository.find();
+  findAll(paginationDto: PaginationDto) {
+    return this.studentRepository.find({
+      skip: paginationDto.page,
+      take: paginationDto.limit,
+    });
   }
 
   findOne(id: number) {
